@@ -1,0 +1,25 @@
+name: ocaml
+version: master
+summary: The core OCaml system
+description: |
+  OCaml is an implementation of the ML language, based on the Caml Light
+  dialect extended with a complete class-based object system and a powerful
+  module system in the style of Standard ML.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict
+
+apps:
+  ocaml:
+    command: ocaml
+    plugs: [home, removable-media]
+
+parts:
+  ocaml:
+    source: .
+    plugin: nil
+    build-packages: [make]
+    build: |
+      ./configure -prefix $SNAPCRAFT_STAGE/usr
+      make world.opt
+      install: make install
