@@ -22,4 +22,4 @@ parts:
     build: |
       ./configure -prefix $SNAPCRAFT_STAGE/usr
       make world.opt
-      install: make install
+    install: make install
